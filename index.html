@@ -1,29 +1,48 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Calculator</title>
     <style>
-        body{
-            background-color: white;
+        *{
+            margin: 0;
+            padding:0
         }
-        table{
-            border-collapse: collapse;
-            width: 250px;
+        body {
+            background-color: white;
+            width: 100%
+        }
+        .cal-container{
+            /* width: 40%; */
+            width: 100%;
+            padding-top: 5em ;
+        }
+        .calculator-body{
+            width: 20%;
+            margin: auto;
             background-color: #3a3434;
-            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
             border-radius: 10px;
         }
-        td{
+        table {
+            border-collapse: collapse;
+            /* padding: 5em; */
+            /* margin: 20px; */
+            
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        td {
             border: 1px black;
-            padding: 10px;
+            padding: 0.5em;
             text-align: center;
         }
-        button{
-            width: 100%;
-            height: 100%;
-            background-color:white;
+
+        button {
+            width: 40px;
+            height: 40px;
+            background-color: white;
             color: black;
             padding: 10px;
             border: none;
@@ -32,17 +51,18 @@
             font-size: 20px;
             font-weight: bolder;
         }
-        input{
+
+        input {
             margin: 10px;
             border: none;
             border-radius: 5px;
         }
-        
-        .equal-to{
+
+        .equal-to {
             background-color: orange;
         }
-        
-        #output{
+
+        #output {
             width: 70%;
             height: 20px;
             font-size: 24px;
@@ -51,51 +71,63 @@
             padding: 10px;
             background-color: #ccc;
         }
-        #output::placeholder{
-            color:gray;
+
+        #output::placeholder {
+            color: gray;
+        }
+
+        .link{
+            margin: 2em 0;
+            text-align: center;
         }
     </style>
 </head>
+
 <body>
-    <div class="calculator-body">
-        <table>
-            <tr>
-                <td colspan="4"><input type="text" id="output" value="0" readonly></td>
-            </tr>
-            <tr>
-                <td><button onclick="addNumber(7)">7</button></td>
-                <td><button onclick="addNumber(8)">8</button></td>
-                <td><button onclick="addNumber(9)">9</button></td>
-                <td><button onclick="performOperation('/')">/</button></td>
-            </tr>
-            <tr>
-                <td><button onclick="addNumber(4)">4</button></td>
-                <td><button onclick="addNumber(5)">5</button></td>
-                <td><button onclick="addNumber(6)">6</button></td>
-                <td><button onclick="performOperation('*')">*</button></td>
-            </tr>
-            <tr>
-                <td><button onclick="addNumber(1)">1</button></td>
-                <td><button onclick="addNumber(2)">2</button></td>
-                <td><button onclick="addNumber(3)">3</button></td>
-                <td><button onclick="performOperation('-')">-</button></td>
-            </tr>
-            <tr>
-                <td><button onclick="addNumber(0)">0</button></td>
-                <td><button onclick="addDecimal()">.</button></td>
-                <td><button onclick="performOperation('+')">+</button></td>
-                <td><button class="equal-to" onclick="calculate()">=</button></td>
-            </tr>
-            <tr>
-                <td><button onclick="clearDisplay()">C</button></td>
-                <td><button onclick="percentage()">%</button></td>
-                <td><button onclick="squareRoot()">&#8730;</button></td>
-                <td><button onclick="square()">X&sup2;</button></td>
-            </tr>
-           
-        </table>
+    <div class="cal-container">
+        <div class="calculator-body">
+            <table>
+                <tr>
+                    <td colspan="4"><input type="text" id="output" value="0" readonly></td>
+                </tr>
+                <tr>
+                    <td><button onclick="addNumber(7)">7</button></td>
+                    <td><button onclick="addNumber(8)">8</button></td>
+                    <td><button onclick="addNumber(9)">9</button></td>
+                    <td><button onclick="performOperation('/')">/</button></td>
+                </tr>
+                <tr>
+                    <td><button onclick="addNumber(4)">4</button></td>
+                    <td><button onclick="addNumber(5)">5</button></td>
+                    <td><button onclick="addNumber(6)">6</button></td>
+                    <td><button onclick="performOperation('*')">*</button></td>
+                </tr>
+                <tr>
+                    <td><button onclick="addNumber(1)">1</button></td>
+                    <td><button onclick="addNumber(2)">2</button></td>
+                    <td><button onclick="addNumber(3)">3</button></td>
+                    <td><button onclick="performOperation('-')">-</button></td>
+                </tr>
+                <tr>
+                    <td><button onclick="addNumber(0)">0</button></td>
+                    <td><button onclick="addDecimal()">.</button></td>
+                    <td><button onclick="performOperation('+')">+</button></td>
+                    <td><button class="equal-to" onclick="calculate()">=</button></td>
+                </tr>
+                <tr>
+                    <td><button onclick="clearDisplay()">C</button></td>
+                    <td><button onclick="percentage()">%</button></td>
+                    <td><button onclick="squareRoot()">&#8730;</button></td>
+                    <td><button onclick="square()">X&sup2;</button></td>
+                </tr>
+
+            </table>
+        </div>
+        <div class="link">
+            <a href="https://github.com/Dev-toria/Calculator" target="_blank">View Source Code</a>
+        </div>
     </div>
     <script src="calculator.js"></script>
-    <a href="https://github.com/Dev-toria/Calculator">https://github.com/Dev-toria/Calculator</a>
 </body>
+
 </html>
