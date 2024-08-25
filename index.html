@@ -6,79 +6,130 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Calculator</title>
     <style>
-        *{
+        * {
             margin: 0;
-            padding:0
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
         }
+
         body {
-            background-color: white;
-            width: 100%
+            background-color: #f7f7f7;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
         }
-        .cal-container{
-            /* width: 40%; */
+
+        .cal-container {
             width: 100%;
-            padding-top: 5em ;
-        }
-        .calculator-body{
-            width: 20%;
-            margin: auto;
-            background-color: #3a3434;
-            border-radius: 10px;
-        }
-        table {
-            border-collapse: collapse;
-            /* padding: 5em; */
-            /* margin: 20px; */
-            
-            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+            max-width: 350px;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 15px;
+            background-color: #ffffff;
         }
 
-        td {
-            border: 1px black;
-            padding: 0.5em;
-            text-align: center;
-        }
-
-        button {
-            width: 40px;
-            height: 40px;
-            background-color: white;
-            color: black;
-            padding: 10px;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            font-size: 20px;
-            font-weight: bolder;
-        }
-
-        input {
-            margin: 10px;
-            border: none;
-            border-radius: 5px;
-        }
-
-        .equal-to {
-            background-color: orange;
+        .calculator-body {
+            background-color: #333;
+            border-radius: 15px;
+            padding: 15px;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
         }
 
         #output {
-            width: 70%;
-            height: 20px;
-            font-size: 24px;
+            width: 100%;
+            height: 60px;
+            font-size: 28px;
             font-weight: bold;
             text-align: right;
             padding: 10px;
-            background-color: #ccc;
+            border: none;
+            border-radius: 10px;
+            background-color: #444;
+            color: #ffffff;
+            box-shadow: inset 0 4px 6px rgba(0, 0, 0, 0.3);
+            margin-bottom: 15px;
         }
 
-        #output::placeholder {
-            color: gray;
+        .button-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 10px;
+            width: 100%;
         }
 
-        .link{
-            margin: 2em 0;
+        button {
+            width: 100%;
+            padding: 20px;
+            background-color: #555;
+            color: #ffffff;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            font-size: 24px;
+            font-weight: bold;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+
+        button:active {
+            transform: scale(0.95);
+        }
+
+        button:hover {
+            background-color: #777;
+        }
+
+        .equal-to {
+            background-color: #ff9800;
+            color: #ffffff;
+        }
+
+        .equal-to:hover {
+            background-color: #ffb74d;
+        }
+
+        .clear {
+            background-color: #f44336;
+            color: #ffffff;
+        }
+
+        .clear:hover {
+            background-color: #e57373;
+        }
+
+        .link {
+            margin-top: 20px;
             text-align: center;
+        }
+
+        .link a {
+            color: #333;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 16px;
+        }
+
+        .link a:hover {
+            text-decoration: underline;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 400px) {
+            #output {
+                font-size: 20px;
+                height: 50px;
+            }
+
+            button {
+                font-size: 18px;
+                padding: 15px;
+            }
         }
     </style>
 </head>
@@ -86,42 +137,33 @@
 <body>
     <div class="cal-container">
         <div class="calculator-body">
-            <table>
-                <tr>
-                    <td colspan="4"><input type="text" id="output" value="0" readonly></td>
-                </tr>
-                <tr>
-                    <td><button onclick="addNumber(7)">7</button></td>
-                    <td><button onclick="addNumber(8)">8</button></td>
-                    <td><button onclick="addNumber(9)">9</button></td>
-                    <td><button onclick="performOperation('/')">/</button></td>
-                </tr>
-                <tr>
-                    <td><button onclick="addNumber(4)">4</button></td>
-                    <td><button onclick="addNumber(5)">5</button></td>
-                    <td><button onclick="addNumber(6)">6</button></td>
-                    <td><button onclick="performOperation('*')">*</button></td>
-                </tr>
-                <tr>
-                    <td><button onclick="addNumber(1)">1</button></td>
-                    <td><button onclick="addNumber(2)">2</button></td>
-                    <td><button onclick="addNumber(3)">3</button></td>
-                    <td><button onclick="performOperation('-')">-</button></td>
-                </tr>
-                <tr>
-                    <td><button onclick="addNumber(0)">0</button></td>
-                    <td><button onclick="addDecimal()">.</button></td>
-                    <td><button onclick="performOperation('+')">+</button></td>
-                    <td><button class="equal-to" onclick="calculate()">=</button></td>
-                </tr>
-                <tr>
-                    <td><button onclick="clearDisplay()">C</button></td>
-                    <td><button onclick="percentage()">%</button></td>
-                    <td><button onclick="squareRoot()">&#8730;</button></td>
-                    <td><button onclick="square()">X&sup2;</button></td>
-                </tr>
+            <input type="text" id="output" value="0" readonly>
+            <div class="button-grid">
+                <button onclick="addNumber(7)">7</button>
+                <button onclick="addNumber(8)">8</button>
+                <button onclick="addNumber(9)">9</button>
+                <button onclick="performOperation('/')">/</button>
 
-            </table>
+                <button onclick="addNumber(4)">4</button>
+                <button onclick="addNumber(5)">5</button>
+                <button onclick="addNumber(6)">6</button>
+                <button onclick="performOperation('*')">*</button>
+
+                <button onclick="addNumber(1)">1</button>
+                <button onclick="addNumber(2)">2</button>
+                <button onclick="addNumber(3)">3</button>
+                <button onclick="performOperation('-')">-</button>
+
+                <button onclick="addNumber(0)">0</button>
+                <button onclick="addDecimal()">.</button>
+                <button onclick="performOperation('+')">+</button>
+                <button class="equal-to" onclick="calculate()">=</button>
+
+                <button class="clear" onclick="clearDisplay()">C</button>
+                <button onclick="percentage()">%</button>
+                <button onclick="squareRoot()">&#8730;</button>
+                <button onclick="square()">X&sup2;</button>
+            </div>
         </div>
         <div class="link">
             <a href="https://github.com/Dev-toria/Calculator" target="_blank">View Source Code</a>
